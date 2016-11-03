@@ -1,5 +1,6 @@
 ﻿using FluentAutomation;
 using Day3_Homework.Tests.Util;
+using System;
 
 namespace Day3_Homework.Tests.PageObjects
 {
@@ -7,6 +8,7 @@ namespace Day3_Homework.Tests.PageObjects
     {
         private const string AccountContainer = "#account";
         private const string PasswordContainer = "#password";
+        private const string ErrorMessageContainer = "#errorMessage";
 
         public LoginPage(FluentTest test)
             : base(test)
@@ -27,6 +29,11 @@ namespace Day3_Homework.Tests.PageObjects
         internal void Login()
         {
             I.Press("{ENTER}");
+        }
+
+        internal void ShowMessage(string errorMessage)
+        {
+            I.Assert.Text(errorMessage).In(ErrorMessageContainer);
         }
     }
 }
