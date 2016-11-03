@@ -17,7 +17,7 @@ namespace Day3_Homework.Controllers
         [HttpPost]
         public ActionResult Index(string account, string password)
         {
-            if (account == "joeychen" && password == "1234")
+            if (account == "rickyho" && password == "1234")
             {
                 return RedirectToAction("Index", "Welcome");
             }

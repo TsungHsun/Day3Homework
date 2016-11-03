@@ -3,7 +3,7 @@ using FluentAutomation;
 using System;
 using TechTalk.SpecFlow;
 
-namespace Day3_Homework.Tests.Features
+namespace Day3_Homework.Tests.Steps
 {
     [Binding]
     [Scope(Feature = "Login")]
@@ -66,6 +66,5 @@ namespace Day3_Homework.Tests.Features
         {
             this._loginPage.ShowMessage(errorMessage);
         }
-
     }
 }

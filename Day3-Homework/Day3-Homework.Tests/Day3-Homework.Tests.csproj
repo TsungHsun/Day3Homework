@@ -116,7 +116,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\LoginSteps.cs" />
+    <Compile Include="Features\LoginController.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginController.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\LoginControllerSteps.cs" />
+    <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="PageObjects\LoginPage.cs" />
     <Compile Include="PageObjects\WelcomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,6 +136,10 @@
     <None Include="Features\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Login.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\LoginController.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoginController.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
