@@ -37,7 +37,7 @@ namespace Day3_Homework.Tests.Features
         }
         
         [Given(@"I Enter my password ""(.*)""")]
-        public void GivenIEnterMyPassword(int password)
+        public void GivenIEnterMyPassword(string password)
         {
             this._loginPage.Password(password);
         }

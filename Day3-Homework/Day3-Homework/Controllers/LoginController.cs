@@ -21,8 +21,11 @@ namespace Day3_Homework.Controllers
             {
                 return RedirectToAction("Index", "Welcome");
             }
-
-            return View();
+            else
+            {
+                ViewBag.Message = "wrong account or password";
+                return View();
+            }
         }
     }
 }

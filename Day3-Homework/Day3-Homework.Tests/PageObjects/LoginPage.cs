@@ -21,7 +21,7 @@ namespace Day3_Homework.Tests.PageObjects
             I.Enter(account).In(AccountContainer);
         }
 
-        internal void Password(int password)
+        internal void Password(string password)
         {
             I.Enter(password).In(PasswordContainer);
         }
