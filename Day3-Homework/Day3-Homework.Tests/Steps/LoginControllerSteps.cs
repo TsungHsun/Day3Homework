@@ -1,5 +1,7 @@
 ﻿using Day3_Homework.Controllers;
+using Day3_Homework.Controllers.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 using System;
 using System.Web.Mvc;
 using TechTalk.SpecFlow;
@@ -29,7 +31,20 @@ namespace Day3_Homework.Tests.Steps
         {
             ScenarioContext.Current.Set<string>(password, "password");
         }
-        
+
+        [Given(@"AuthService is stub")]
+        public void GivenAuthServiceIsStub()
+        {
+            var stubAuth = Substitute.For<IAuth>();
+            this._target.AuthService = stubAuth;
+        }
+
+        [Given(@"AuthService\.Validate return isValid is (.*)")]
+        public void GivenAuthService_ValidateReturnIsValidIsTrue(bool isValid)
+        {
+            this._target.AuthService.Validate("", "").ReturnsForAnyArgs(isValid);
+        }
+
         [When(@"I invoke Index with HttpPost")]
         public void WhenIInvokeIndexWithHttpPost()
         {

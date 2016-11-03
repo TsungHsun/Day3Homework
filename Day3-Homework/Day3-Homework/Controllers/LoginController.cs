@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Day3_Homework.Controllers.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace Day3_Homework.Controllers
 {
     public class LoginController : Controller
     {
+        public IAuth AuthService { get; set; }
+
         // GET: Login
         public ActionResult Index()
         {
@@ -17,7 +20,9 @@ namespace Day3_Homework.Controllers
         [HttpPost]
         public ActionResult Index(string account, string password)
         {
-            if (account == "rickyho" && password == "1234")
+            bool isValid = this.AuthService.Validate(account, password);
+
+            if (isValid)
             {
                 return RedirectToAction("Index", "Welcome");
             }
