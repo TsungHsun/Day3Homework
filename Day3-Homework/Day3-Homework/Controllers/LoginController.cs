@@ -1,9 +1,5 @@
 ﻿using Day3_Homework.Controllers.Models;
 using Day3_Homework.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Day3_Homework.Controllers

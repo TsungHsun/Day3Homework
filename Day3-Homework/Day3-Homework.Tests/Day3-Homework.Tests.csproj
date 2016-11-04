@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ExpectedObjects, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ExpectedObjects.1.2.3\lib\net40\ExpectedObjects.dll</HintPath>
       <Private>True</Private>
@@ -57,6 +65,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
@@ -111,6 +121,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\AuthService.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthService.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Login.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,18 +136,57 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginController.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\ProfileDao.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileDao.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ModelInTest\TestDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelInTest\TestDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelInTest\TestDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ModelInTest\Users.cs">
+      <DependentUpon>TestDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\AuthServiceSteps.cs" />
     <Compile Include="Steps\LoginControllerSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="PageObjects\LoginPage.cs" />
     <Compile Include="PageObjects\WelcomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Steps\ProfileDaoSteps.cs" />
     <Compile Include="Util\MyTestContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="ModelInTest\TestDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TestDBModel.edmx</DependentUpon>
+      <LastGenOutput>TestDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelInTest\TestDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TestDBModel.edmx</DependentUpon>
+      <LastGenOutput>TestDBModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Features\AuthService.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AuthService.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Login.feature.cs</LastGenOutput>
@@ -141,13 +195,30 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>LoginController.feature.cs</LastGenOutput>
     </None>
-    <None Include="packages.config" />
+    <EntityDeploy Include="ModelInTest\TestDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TestDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Features\ProfileDao.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ProfileDao.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ModelInTest\TestDBModel.edmx.diagram">
+      <DependentUpon>TestDBModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Day3-Homework\Day3-Homework.csproj">
       <Project>{3618E8B9-9D29-4F93-8378-4519C08BF703}</Project>
       <Name>Day3-Homework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

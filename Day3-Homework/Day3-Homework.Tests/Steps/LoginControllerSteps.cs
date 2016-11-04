@@ -40,7 +40,7 @@ namespace Day3_Homework.Tests.Steps
         }
 
         [Given(@"AuthService\.Validate return isValid is (.*)")]
-        public void GivenAuthService_ValidateReturnIsValidIsTrue(bool isValid)
+        public void GivenAuthService_ValidateReturnIsValidIs(bool isValid)
         {
             this._target.AuthService.Validate("", "").ReturnsForAnyArgs(isValid);
         }
